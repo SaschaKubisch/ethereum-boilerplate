@@ -7,7 +7,7 @@ Moralis.start({ serverUrl, appId });
 async function login() {
   let user = Moralis.User.current();
   if (!user) {
-    user = await Moralis.authenticate({ signingMessage: "Log in using Moralis" })
+    user = await Moralis.authenticate({ signingMessage: "Log in" })
       .then(function (user) {
         console.log("logged in user:", user);
         console.log(user.get("ethAddress"));
@@ -18,6 +18,22 @@ async function login() {
   }
 }
 
+const user = new Moralis.User();
+user.set("username", "my name");
+user.set("password", "my pass");
+user.set("email", "email@example.com");
+
+// other fields can be set just like with Moralis.Object
+user.set("phone", "415-392-0202");
+try {
+  await user.signUp();
+  // Hooray! Let them use the app now.
+} catch (error) {
+  // Show the error message somewhere and let the user try again.
+  alert("Error: " + error.code + " " + error.message);
+}
+
+
 async function logOut() {
   await Moralis.User.logOut();
   console.log("logged out");
@@ -25,3 +41,4 @@ async function logOut() {
 
 document.getElementById("btn-login").onclick = login;
 document.getElementById("btn-logout").onclick = logOut;
+
