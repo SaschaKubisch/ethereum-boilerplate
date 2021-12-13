@@ -3,6 +3,8 @@ const serverUrl = "https://kfmarlu6gwvy.usemoralis.com:2053/server";
 const appId = "FmeRUIU98sfbL0uGydozheJGm3IjfwdATFfz5j9P";
 Moralis.start({ serverUrl, appId });
 
+
+
 /* Authentication code */
 async function login() {
   let user = Moralis.User.current();

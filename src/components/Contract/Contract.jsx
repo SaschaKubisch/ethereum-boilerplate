@@ -11,7 +11,7 @@ export default function Contract() {
   const [responses, setResponses] = useState({});
   const { contractName, networks, abi } = contractInfo;
 
-  const contractAddress = useMemo(() => networks[1337].address, [networks]);
+  const contractAddress = useMemo(() => networks[5777].address, [networks]);
 
   /**Live query */
   const { data } = useMoralisQuery("Events", (query) => query, [], {
